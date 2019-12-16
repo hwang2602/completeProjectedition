@@ -97,16 +97,21 @@ public class luong_Impl implements luong_Dao{
             rs = cs.executeQuery();
 
             List<String> l = new Vector<String>();
-            l.add("STT");
-            l.add("CODE");
-            l.add("NAME");
-            l.add("PRICE");
+            l.add("ma");
+            l.add("manv");
+            l.add("luongcoban");
+            l.add("phucap");
+            l.add("tienthuong");
+            l.add("baohiem");
+            l.add("tong");
+            l.add("ngaylinh");
+            l.add("ghichu");
             StringBuilder sb = Util.buildDataGridXml(rs, l);
 
             return "<rows><page>"+getDTO.getPage()+"</page><total>"+String.valueOf(iTotalPage)+"</total><records>"+String.valueOf(count)+"</records>"+sb.toString()+"</rows>";
         }
         catch(Exception ex){
-       	 	System.out.println("PRODUCT_Impl.getXML() error : " + ex.toString());
+       	 	System.out.println("luong_Impl.getXML() error : " + ex.toString());
             ex.printStackTrace();
             return "<rows><page>0</page><total>0</total><records>0</records>0</rows>";
         }
@@ -117,39 +122,39 @@ public class luong_Impl implements luong_Dao{
             String sqlCall = "{ CALL SP_luong1_Update(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement cs = conn.prepareCall(sqlCall);
             if(postDTO.ma == null || postDTO.ma.trim().equals(""))
-            	cs.setNull(1, java.sql.Types.VARCHAR);
+            	cs.setNull(1, java.sql.Types.INTEGER);
             else
             	cs.setString(1, postDTO.ma);
             if(postDTO.manv == null || postDTO.manv.trim().equals(""))
-            	cs.setNull(2, java.sql.Types.VARCHAR);
+            	cs.setNull(2, java.sql.Types.INTEGER);
             else
             	cs.setString(2, postDTO.manv);
             if(postDTO.luongcoban == null || postDTO.luongcoban.trim().equals(""))
-            	cs.setNull(3, java.sql.Types.VARCHAR);
+            	cs.setNull(3, java.sql.Types.FLOAT);
             else
             	cs.setString(3, postDTO.luongcoban);
             if(postDTO.phucap == null || postDTO.phucap.trim().equals(""))
-            	cs.setNull(4, java.sql.Types.VARCHAR);
+            	cs.setNull(4, java.sql.Types.FLOAT);
             else
             	cs.setString(4, postDTO.phucap);
             if(postDTO.tienthuong == null || postDTO.tienthuong.trim().equals(""))
-            	cs.setNull(5, java.sql.Types.VARCHAR);
+            	cs.setNull(5, java.sql.Types.FLOAT);
             else
             	cs.setString(5, postDTO.tienthuong);
             if(postDTO.baohiem == null || postDTO.baohiem.trim().equals(""))
-            	cs.setNull(6, java.sql.Types.VARCHAR);
+            	cs.setNull(6, java.sql.Types.FLOAT);
             else
             	cs.setString(6, postDTO.baohiem);
             if(postDTO.tong == null || postDTO.tong.trim().equals(""))
-            	cs.setNull(7, java.sql.Types.VARCHAR);
+            	cs.setNull(7, java.sql.Types.FLOAT);
             else
             	cs.setString(7, postDTO.tong);
             if(postDTO.ngaylinh == null || postDTO.ngaylinh.trim().equals(""))
-            	cs.setNull(8, java.sql.Types.VARCHAR);
+            	cs.setNull(8, java.sql.Types.FLOAT);
             else
             	cs.setString(8, postDTO.ngaylinh);
              if(postDTO.ghichu == null || postDTO.ghichu.trim().equals(""))
-            	cs.setNull(9, java.sql.Types.VARCHAR);
+            	cs.setNull(9, java.sql.Types.NVARCHAR);
             else
             	cs.setString(9, postDTO.ghichu);
             
@@ -172,7 +177,7 @@ public class luong_Impl implements luong_Dao{
             	return error;
         }
         catch(Exception ex){
-            System.out.println("PRODUCT.CallIUP() error : " + ex.toString());
+            System.out.println("luong.CallIUP() error : " + ex.toString());
             ex.printStackTrace();
             return ex.getMessage();
         }
@@ -184,7 +189,7 @@ public class luong_Impl implements luong_Dao{
         	return CallIUP(1, postDTO);
         }
         catch(Exception ex){
-            System.out.println("PRODUCT.insert() error : " + ex.toString());
+            System.out.println("luong.insert() error : " + ex.toString());
             ex.printStackTrace();
             return ex.toString();
         }
@@ -197,7 +202,7 @@ public class luong_Impl implements luong_Dao{
         }
         catch(Exception ex){
            // Luu y check dieu kien FK Contraint neu can!
-           System.out.println("PRODUCT.delete() error : " + ex.toString());
+           System.out.println("luong.delete() error : " + ex.toString());
             ex.printStackTrace();
            return ex.toString();
         }
@@ -209,7 +214,7 @@ public class luong_Impl implements luong_Dao{
         	return CallIUP(2, postDTO);
        }
        catch(Exception ex){
-           System.out.println("PRODUCT.update() error : " + ex.toString());
+           System.out.println("luong.update() error : " + ex.toString());
             ex.printStackTrace();
            return ex.toString();
        }

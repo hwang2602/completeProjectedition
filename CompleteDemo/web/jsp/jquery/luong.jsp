@@ -155,9 +155,9 @@ $(function() {
       datatype: "xml", 
       colNames:['STT', 'Mã số lương', 'Mã nhân viên', 'Lương cơ bản', 'Phụ cấp', 'Tiền thưởng', 'Bảo hiểm', 'Tổng', 'Ngày lĩnh', 'Ghi chú'], 
       colModel:[
-          {name:'STT',index:'STT', width:80, align:"center"},
-          {name:'ma',index:'ma', width:100},
-          {name:'manv',index:'manv', width:200},
+          {name:'STT',index:'STT', width:50, align:"center"},
+          {name:'ma',index:'ma', width:90},
+          {name:'manv',index:'manv', width:90},
           {name:'luongcoban',index:'luongcoban', width:100, align:"right"},
           {name:'phucap',index:'phucap', width:100, align:"right"},
           {name:'tienthuong',index:'tienthuong', width:100, align:"right"},
@@ -172,7 +172,7 @@ $(function() {
       scrollrows: true,
       autowidth: false,
       height: 400,
-      width:800,
+      width:1000,
       shrinkToFit:false,
       caption: " Danh sách lương",
       sortname: 'manv', viewrecords: true, sortorder: "desc"
