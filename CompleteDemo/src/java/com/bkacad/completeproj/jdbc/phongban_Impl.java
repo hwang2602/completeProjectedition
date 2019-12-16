@@ -47,29 +47,25 @@ public class phongban_Impl implements phongban_Dao {
                 }
             }
 
-            String sqlCall = "{ CALL SP_phongban1_Select(?, ?, ?, ?, ?, ?, ?, ?)}";
+             String sqlCall = "{ CALL SP_phongban2_Select(?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement cs = conn.prepareCall(sqlCall);
             System.out.println("sqlCall=" + sqlCall);
-            if (getDTO.mapb == null || getDTO.mapb.trim().equals("")) {
-                cs.setNull(1, java.sql.Types.INTEGER);
-            } else {
-                cs.setInt(1,  Integer.parseInt(getDTO.mapb));
-            }
-            if (getDTO.tenpb == null || getDTO.tenpb.trim().equals("")) {
-                cs.setNull(2, java.sql.Types.NVARCHAR);
-            } else {
-                cs.setString(2, getDTO.tenpb);
-            }
-            if (getDTO.diachi == null || getDTO.diachi.trim().equals("")) {
-                cs.setNull(7, java.sql.Types.NVARCHAR);
-            } else {
-                cs.setString(7, getDTO.diachi);
-            }
-            if (getDTO.sdt == null || getDTO.sdt.trim().equals("")) {
-                cs.setNull(8, java.sql.Types.VARCHAR);
-            } else {
-                cs.setString(8, getDTO.sdt);
-            }
+            if(getDTO.mapb == null || getDTO.mapb.trim().equals(""))
+            	cs.setNull(1, java.sql.Types.INTEGER);
+            else
+            	cs.setString(1, getDTO.mapb);
+            if(getDTO.tenpb == null || getDTO.tenpb.trim().equals(""))
+            	cs.setNull(2, java.sql.Types.NVARCHAR);
+            else
+            	cs.setString(2, getDTO.tenpb);
+            if(getDTO.sdt == null || getDTO.sdt.trim().equals(""))
+            	cs.setNull(8, java.sql.Types.FLOAT);
+            else
+            	cs.setFloat(8, Float.parseFloat(getDTO.sdt));
+            if(getDTO.diachi == null || getDTO.diachi.trim().equals(""))
+            	cs.setNull(7, java.sql.Types.NVARCHAR);
+            else
+            	cs.setString(7, getDTO.diachi);
             cs.setInt(3, 1);
             cs.setInt(4, 999999);
             cs.setString(5, orderby);
@@ -110,28 +106,24 @@ public class phongban_Impl implements phongban_Dao {
 
     public String CallIUP(int action, phongban_PostDto postDTO) { // action = 1: Insert, 2: Update, 3: Delete
         try {
-            String sqlCall = "{ CALL SP_phongban_Update(?, ?, ?, ?, ?, ?, ? )}";
+            String sqlCall = "{ CALL SP_phongban2_Update(?, ?, ?, ?, ?, ?, ? )}";
             CallableStatement cs = conn.prepareCall(sqlCall);
-            if (postDTO.mapb == null || postDTO.mapb.trim().equals("")) {
-                cs.setNull(1, java.sql.Types.INTEGER);
-            } else {
-                cs.setString(1, postDTO.mapb);
-            }
-            if (postDTO.tenpb == null || postDTO.tenpb.trim().equals("")) {
-                cs.setNull(2, java.sql.Types.NVARCHAR);
-            } else {
-                cs.setString(2, postDTO.tenpb);
-            }
-            if (postDTO.diachi == null || postDTO.diachi.trim().equals("")) {
-                cs.setNull(4, java.sql.Types.NVARCHAR);
-            } else {
-                cs.setString(4, postDTO.diachi);
-            }
-            if (postDTO.sdt == null || postDTO.sdt.trim().equals("")) {
-                cs.setNull(3, java.sql.Types.BIGINT);
-            } else {
-                cs.setString(3, postDTO.sdt);
-            }
+            if(postDTO.mapb == null || postDTO.mapb.trim().equals(""))
+            	cs.setNull(1, java.sql.Types.INTEGER);
+            else
+            	cs.setString(1, postDTO.mapb);
+            if(postDTO.tenpb == null || postDTO.tenpb.trim().equals(""))
+            	cs.setNull(2, java.sql.Types.NVARCHAR);
+            else
+            	cs.setString(2, postDTO.tenpb);
+            if(postDTO.sdt == null || postDTO.sdt.trim().equals(""))
+            	cs.setNull(4, java.sql.Types.FLOAT);
+            else
+            	cs.setString(4, postDTO.sdt);
+            if(postDTO.diachi == null || postDTO.diachi.trim().equals(""))
+            	cs.setNull(3, java.sql.Types.NVARCHAR);
+            else
+            	cs.setString(3, postDTO.diachi);
             cs.setInt(5, action);
             cs.registerOutParameter(6, java.sql.Types.INTEGER);
             cs.registerOutParameter(7, java.sql.Types.VARCHAR);
