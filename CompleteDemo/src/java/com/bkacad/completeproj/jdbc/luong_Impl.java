@@ -97,6 +97,7 @@ public class luong_Impl implements luong_Dao{
             rs = cs.executeQuery();
 
             List<String> l = new Vector<String>();
+            l.add("STT");
             l.add("ma");
             l.add("manv");
             l.add("luongcoban");
