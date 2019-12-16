@@ -137,7 +137,7 @@ $(function() {
           {name:'STT',index:'STT', width:80, align:"center"},
           {name:'mapb',index:'mapb', width:100},
           {name:'tenpb',index:'tenpb', width:200},
-          {name:'diachi',index:'diachi', width:100},
+          {name:'diachi',index:'diachi', width:200},
           {name:'sdt',index:'sdt', width:100, align:"right"}
       ],
       rowNum:15,  rowList:[15,30,60,80,150], pager: '#Pager1', 
@@ -371,15 +371,15 @@ $(function() {
 			</tr>
 			<tr>
 				<td align=left><label for="tenpb_create">Tên phòng ban<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="tenpb_create" name="tenpb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
+				<td align=left><input type="text" id="tenpb_create" name="tenpb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 			<tr>
 				<td align=left><label for="diachi_create">Địa chỉ phòng ban<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="diachi_create" name="diachi_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="diachi_create" name="diachi_create" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 			<tr>
                             <td align=left><label for="sdt_create">số điện thoại<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="sdt_create" name="sdt_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="sdt_create" name="sdt_create" value="" class="text ui-widget-content ui-corner-all" maxlength="10" /></td>
 			</tr>
 		</table>
 	</form>
@@ -396,15 +396,15 @@ $(function() {
 			</tr>
 			<tr>
 				<td align=left><label for="tenpb_edit">Tên phòng ban<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="tenpb_edit" name="tenpb_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
+				<td align=left><input type="text" id="tenpb_edit" name="tenpb_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 			<tr>
 				<td align=left><label for="diachi_edit">địa chỉ<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="diachi_edit" name="diachi_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="diachi_edit" name="diachi_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 			<tr>
                                 <td align=left><label for="sdt_edit">số điện thoại<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="sdt_edit" name="sdt_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="sdt_edit" name="sdt_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="10" /></td>
 			</tr>
 		</table>
 	</form>
