@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/src/java/com/bkacad/completeproj/jdbc/EMPLOYEE_Impl.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/src/java/com/bkacad/completeproj/jdbc/phongban_Impl.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/src/java/com/bkacad/completeproj/dto/phongban_GetDto.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/src/java/com/bkacad/completeproj/jdbc/DBUtil.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/src/java/com/bkacad/completeproj/jdbc/chucvu_Impl.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/web/jsp/jquery/PRODUCT.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/web/jsp/jquery/phongban.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/src/java/com/bkacad/completeproj/jdbc/nhanvien_Impl.java</file>
+            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/ProjectJQGrid/CompleteDemo/web/jsp/jquery/nhanvien.jsp</file>
         </group>
     </open-files>
 </project-private>
