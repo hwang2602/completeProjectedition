@@ -8,7 +8,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <head>
-<title>bkacad.edu.vn</title>
+<title>Quản lý nhân sự</title>
 <link href="${pageContext.request.contextPath}/images/favicon.ico" rel="shortcut icon" />
 </head>
 
@@ -54,10 +54,10 @@
 				    <td align=right><label for="tencv_search">Tên chức vụ</label></td>
 				    <td align=left><input type="text" id="tencv_search" name="tencv_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
 				    </tr>
-				    <tr> 
+<!--				    <tr> 
 				    <td align=right><label for="mapb_search">Mã phòng ban</label></td>
 				    <td align=left><input type="text" id="mapb_search" name="mapb_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
-				    </tr>
+				    </tr>-->
 				    <tr>
 				        <td></td>
 				        <td align=left><button id="search" >Tìm kiếm</button></td>
@@ -138,7 +138,7 @@ $(function() {
           {name:'macv',index:'macv', width:100},
           {name:'tencv',index:'tencv', width:200},
           {name:'mapb',index:'mapb', width:100},
-          {name:'congviec',index:'congviec', width:100, align:"right"}
+          {name:'congviec',index:'congviec', width:200, align:"right"}
       ],
       rowNum:15,  rowList:[15,30,60,80,150], pager: '#Pager1', 
       scrollrows: true,
@@ -371,15 +371,15 @@ $(function() {
 			</tr>
 			<tr>
 				<td align=left><label for="tencv_create">Tên công việc<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="tencv_create" name="tencv_create" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
+				<td align=left><input type="text" id="tencv_create" name="tencv_create" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 			<tr>
 				<td align=left><label for="mapb_create">mã phòng ban<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="mapb_create" name="mapb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="mapb_create" name="mapb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
 			</tr>
 			<tr>
                             <td align=left><label for="congviec_create">công việc<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="congviec_create" name="mapb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="congviec_create" name="mapb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 		</table>
 	</form>
@@ -396,15 +396,15 @@ $(function() {
 			</tr>
 			<tr>
 				<td align=left><label for="tencv_edit">Tên công việc<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="tencv_edit" name="tencv_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
+				<td align=left><input type="text" id="tencv_edit" name="tencv_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 			<tr>
 				<td align=left><label for="mapb_edit">mã phòng ban<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="mapb_edit" name="mapb_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="mapb_edit" name="mapb_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
 			</tr>
 			<tr>
                                 <td align=left><label for="congviec_edit">công việc<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="congviec_edit" name="congviec_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="congviec_edit" name="congviec_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 		</table>
 	</form>

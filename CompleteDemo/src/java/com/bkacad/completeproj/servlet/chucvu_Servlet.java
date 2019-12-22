@@ -40,6 +40,7 @@ public class chucvu_Servlet extends AbstractServlet {
 			getDTO.macv = Util.checkNull(request.getParameter("macv"));
 			getDTO.tencv = Util.checkNull(request.getParameter("tencv"));
                         getDTO.mapb = Util.checkNull(request.getParameter("mapb"));
+                        getDTO.congviec = Util.checkNull(request.getParameter("congviec"));
 			strResult=daochucvu.getXML(getDTO);
 
 		response.setContentType(Constant.CONTENT_TYPE_XML);

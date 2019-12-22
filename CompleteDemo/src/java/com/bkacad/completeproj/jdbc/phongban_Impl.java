@@ -47,7 +47,7 @@ public class phongban_Impl implements phongban_Dao {
                 }
             }
 
-             String sqlCall = "{ CALL SP_phongban2_Select(?, ?, ?, ?, ?, ?, ?, ?)}";
+             String sqlCall = "{ CALL SP_phongban_Select(?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement cs = conn.prepareCall(sqlCall);
             System.out.println("sqlCall=" + sqlCall);
             if(getDTO.mapb == null || getDTO.mapb.trim().equals(""))
@@ -106,7 +106,7 @@ public class phongban_Impl implements phongban_Dao {
 
     public String CallIUP(int action, phongban_PostDto postDTO) { // action = 1: Insert, 2: Update, 3: Delete
         try {
-            String sqlCall = "{ CALL SP_phongban2_Update(?, ?, ?, ?, ?, ?, ? )}";
+            String sqlCall = "{ CALL SP_phongban_Update(?, ?, ?, ?, ?, ?, ? )}";
             CallableStatement cs = conn.prepareCall(sqlCall);
             if(postDTO.mapb == null || postDTO.mapb.trim().equals(""))
             	cs.setNull(1, java.sql.Types.INTEGER);

@@ -1,9 +1,8 @@
 <%-- 
-    Document   : chucvu
-    Created on : Dec 14, 2019, 10:23:13 PM
+    Document   : chamcong
+    Created on : Dec 22, 2019, 3:07:44 PM
     Author     : Admin
 --%>
-
 <!DOCTYPE html>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -43,21 +42,21 @@
 	<div id="ja-wrapper">
 		<div id="ja-wrapper-top"></div>
 		<div id="ja-wrapper-inner" class="clearfix">		
-			<font size="5">CHỨC VỤ</font>
+			<font size="5">QUẢN LÝ CHẤM CÔNG</font>
 			<br /> <br />
 			
 			<div id="dialog_search" title="Tìm kiếm" >
 				<table width="70%">
 				    <tr>
-				    <td align=right><label for="macv_search">Mã chức vụ</label></td>
-				    <td align=left><input type="text" id="macv_search" name="macv_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
-				    <td align=right><label for="tencv_search">Tên chức vụ</label></td>
-				    <td align=left><input type="text" id="tencv_search" name="tencv_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
+				    <td align=right><label for="machamcong_search">Mã chấm công</label></td>
+				    <td align=left><input type="text" id="machamcong_search" name="machamcong_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
+				    <td align=right><label for="manv_search">Mã nhân viên</label></td>
+				    <td align=left><input type="text" id="manv_search" name="manv_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
 				    </tr>
-<!--				    <tr> 
-				    <td align=right><label for="mapb_search">Mã phòng ban</label></td>
-				    <td align=left><input type="text" id="mapb_search" name="mapb_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
-				    </tr>-->
+				    <tr> 
+				    <td align=right><label for="ngaychamcong_search">Ngày chấm công</label></td>
+				    <td align=left><input type="text" id="ngaychamcong_search" name="ngaychamcong_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
+				    </tr>
 				    <tr>
 				        <td></td>
 				        <td align=left><button id="search" >Tìm kiếm</button></td>
@@ -69,7 +68,7 @@
 			<button id="edit" name="button" style="float: left;">Sửa</button>
 			<button id="delete" name="button" style="float: left;">Xóa</button>
 			<br /><br />
-			<table id="chucvuGrid"></table>
+			<table id="chamcongGrid"></table>
 			<div id="Pager1"></div>
 			<br />
 		</div>
@@ -80,41 +79,38 @@
 
 <script type="text/javascript">
 
-function reloadchucvuList()
+function reloadchamcongList()
 {
   var params = "";
-  params += "macv=" + $("#macv_search").val();
-  params += "&tencv=" + $("#tencv_search").val();
-  params += "&mapb=" + $("#mapb_search").val();
-  jQuery("#chucvuGrid").setGridParam({ url:"<%=request.getContextPath() %>/chucvu_Servlet?" + params});
-  jQuery("#chucvuGrid").clearGridData();
-  jQuery("#chucvuGrid").trigger("reloadGrid");
+  params += "machamcong=" + $("#machamcong_search").val();
+  params += "&manv=" + $("#manv_search").val();
+  params += "&ngaychamcong=" + $("#ngaychamcong_search").val();
+  jQuery("#chamcongGrid").setGridParam({ url:"<%=request.getContextPath() %>/chamcong_Servlet?" + params});
+  jQuery("#chamcongGrid").clearGridData();
+  jQuery("#chamcongGrid").trigger("reloadGrid");
 }
 
 function clear_create()
 {
-	$("#macv_create").val("");
-	$("#tencv_create").val("");
-	$("#mapb_create").val("");
-        $("#congviec_create").val("");
+	$("#machamcong_create").val("");
+	$("#manv_create").val("");
+	$("#ngaychamcong_create").val("");
 }
 
 function isValidForm_create() {
-	 var macv = trim($("#macv_create").val());
-	 var tencv = trim($("#tencv_create").val()); 
-	 var congviec = trim($("#congviec_create").val());
-         var mapb = trim($("#mapb_create").val());
-	 if (!((macv == "") || (tencv == "") || (congviec == "") || (mapb == "") )) { 
+	 var machamcong = trim($("#machamcong_create").val());
+	 var manv = trim($("#manv_create").val()); 
+	 var ngaychamcong = trim($("#ngaychamcong_create").val());
+	 if (!((machamcong == "") || (manv == "") || (ngaychamcong == ""))) { 
 		 return true; 
 	} 
 } 
 
 function isValidForm_edit() {
-	 var macv = trim($("#macv_edit").val()); 
-	 var tencv = trim($("#tencv_edit").val()); 
-	 var mapb = trim($("#mapb_edit").val()); 
-         var congviec = trim($("#congviec_create").val());
-	 if (!((macv == "") || (tencv == "") || (mapb == "") || (congviec == ""))) { 
+	 var machamcong = trim($("#machamcong_edit").val()); 
+	 var manv = trim($("#manv_edit").val()); 
+	 var ngaychamcong = trim($("#ngaychamcong_edit").val()); 
+	 if (!((machamcong == "") || (manv == "") || (ngaychamcong == ""))) { 
 		 return true; 
 	} 
 } 
@@ -129,16 +125,15 @@ function trim( value ) {
 
 $(function() {
 
-  jQuery("#chucvuGrid").jqGrid({ 
-      url:'<%=request.getContextPath() %>/chucvu_Servlet', 
+  jQuery("#chamcongGrid").jqGrid({ 
+      url:'<%=request.getContextPath() %>/chamcong_Servlet', 
       datatype: "xml", 
-      colNames:['STT', 'Mã chức vụ', 'Tên chức vụ', 'mã phòng ban', 'công việc'], 
+      colNames:['STT', 'Mã chấm công', 'Mã nhân viên', 'Ngày chấm công'], 
       colModel:[
           {name:'STT',index:'STT', width:80, align:"center"},
-          {name:'macv',index:'macv', width:100},
-          {name:'tencv',index:'tencv', width:200},
-          {name:'mapb',index:'mapb', width:100},
-          {name:'congviec',index:'congviec', width:200, align:"right"}
+          {name:'machamcong',index:'machamcong', width:100},
+          {name:'manv',index:'manv', width:200},
+          {name:'ngaychamcong',index:'ngaychamcong', width:100, align:"right"}
       ],
       rowNum:15,  rowList:[15,30,60,80,150], pager: '#Pager1', 
       scrollrows: true,
@@ -146,8 +141,8 @@ $(function() {
       height: 400,
       width:800,
       shrinkToFit:false,
-      caption: " Danh sách chucvu",
-      sortname: 'mapb', viewrecords: true, sortorder: "desc"
+      caption: " Danh sách chamcong",
+      sortname: 'ngaychamcong', viewrecords: true, sortorder: "desc"
 
   }).navGrid('#Pager1',{edit:false,add:false,del:false,search:false,refresh:true,view:false,position:"left",cloneToTop:true});
 
@@ -173,8 +168,8 @@ $(function() {
                           {
                               $.ajax({
                                   type: "POST",
-                                  url: "<%=request.getContextPath()%>/chucvu_Servlet",
-                                  data: {"xml":"<doc><method>create</method><macv>" + $("#macv_create").val()+"</macv><tencv>" + $("#tencv_create").val()+"</tencv><mapb>" + $("#mapb_create").val()+"</mapb><congviec>" + $("#congviec_create").val()+"</congviec></doc>"},
+                                  url: "<%=request.getContextPath()%>/chamcong_Servlet",
+                                  data: {"xml":"<doc><method>create</method><machamcong>" + $("#machamcong_create").val()+"</machamcong><manv>" + $("#manv_create").val()+"</manv><ngaychamcong>" + $("#ngaychamcong_create").val()+"</ngaychamcong></doc>"},
                                   error: function(){
                                       $( "#dialog_error" ).dialog({
                                           modal: true,
@@ -188,7 +183,7 @@ $(function() {
                                   },
                                   success: function(msg){
                                       if (msg.trim() == 'success') {
-                                          jQuery("#chucvuGrid").trigger("reloadGrid");
+                                          jQuery("#chamcongGrid").trigger("reloadGrid");
                                       } else {
                                           document.getElementById('dialog_error').innerHTML="<font style='color:red;'>Có lỗi xảy ra " + msg + ". Vui lòng thử lại hoặc liên hệ với hỗ trợ.</font>";
                                           $("#dialog_error" ).dialog({modal: true,buttons:{OK: function(){$( this ).dialog( "close" );}}});blockflag = false;
@@ -237,8 +232,8 @@ $(function() {
                           {
                               $.ajax({
                                   type: "POST",
-                                  url: "<%=request.getContextPath()%>/chucvu_Servlet",
-                                  data: {"xml":"<doc><method>update</method><macv>" + $("#macv_edit").val()+"</macv><tencv>" + $("#tencv_edit").val()+"</tencv><mapb>" + $("#mapb_edit").val()+"</mapb><congviec>" + $("#congviec_edit").val()+"</congviec></doc>"},
+                                  url: "<%=request.getContextPath()%>/chamcong_Servlet",
+                                  data: {"xml":"<doc><method>update</method><machamcong>" + $("#machamcong_edit").val()+"</machamcong><manv>" + $("#manv_edit").val()+"</manv><ngaychamcong>" + $("#ngaychamcong_edit").val()+"</ngaychamcong></doc>"},
                                   error: function(){
 
                                       $( "#dialog_error" ).dialog({
@@ -253,7 +248,7 @@ $(function() {
 									   },
                                   success: function(msg){
                                       if (msg.trim() == 'success'){
-                                          jQuery("#chucvuGrid").trigger("reloadGrid");
+                                          jQuery("#chamcongGrid").trigger("reloadGrid");
                                       }else{
                                           document.getElementById('dialog_error').innerHTML="<font style='color:red;'>Có lỗi xảy ra " + msg + ". Vui lòng thử lại hoặc liên hệ với hỗ trợ.</font>";
                                           $("#dialog_error" ).dialog({modal: true,buttons:{OK: function(){$( this ).dialog( "close" );}}});blockflag = false;
@@ -277,13 +272,12 @@ $(function() {
                   }
               }
           });
-          var id = jQuery("#chucvuGrid").jqGrid('getGridParam','selrow'); 
+          var id = jQuery("#chamcongGrid").jqGrid('getGridParam','selrow'); 
           if (id) {
-              var ret = jQuery("#chucvuGrid").jqGrid('getRowData',id);
-          $("#macv_edit").val(ret.macv);
-          $("#tencv_edit").val(ret.tencv);
-          $("#mapb_edit").val(ret.mapb);
-          $("#congviec_edit").val(ret.congviec);
+              var ret = jQuery("#chamcongGrid").jqGrid('getRowData',id);
+          $("#machamcong_edit").val(ret.machamcong);
+          $("#manv_edit").val(ret.manv);
+          $("#ngaychamcong_edit").val(ret.ngaychamcong);
           $("#dialog_form_edit" ).dialog( "open" ); 
           } else {
               $( "#dialog_info" ).dialog({
@@ -303,9 +297,9 @@ $(function() {
   $( "#delete" )
       .button()
       .click(function() {
-          var id1 = jQuery("#chucvuGrid").jqGrid('getGridParam','selrow'); 
+          var id1 = jQuery("#chamcongGrid").jqGrid('getGridParam','selrow'); 
           if (id1) {
-              var ret = jQuery("#chucvuGrid").jqGrid('getRowData',id1); 
+              var ret = jQuery("#chamcongGrid").jqGrid('getRowData',id1); 
               $( "#dialog_confirm_delete" ).dialog({
                   resizable: false,
                   height:140,
@@ -315,8 +309,8 @@ $(function() {
                       blockflag = true;
                       $.ajax({
                           type: "POST",
-                          url: "<%=request.getContextPath()%>/chucvu_Servlet",
-                          data: {"xml":"<doc><method>delete</method><macv>" + ret.macv + "</macv><tencv>" + $("#tencv_edit").val()+"</tencv><mapb>" + $("#mapb_edit").val()+"</mapb><congviec>" + $("#congviec_edit").val()+"</congviec></doc>"},
+                          url: "<%=request.getContextPath()%>/chamcong_Servlet",
+                          data: {"xml":"<doc><method>delete</method><machamcong>" + ret.machamcong + "</machamcong><manv>" + $("#manv_edit").val()+"</manv><ngaychamcong>" + $("#ngaychamcong_edit").val()+"</ngaychamcong></doc>"},
                           error: function(){
                               $( "#dialog_error" ).dialog({
                                   modal: true,
@@ -330,7 +324,7 @@ $(function() {
                           },
                           success: function(msg) {
                               if (msg.trim() == 'success') {
-                                  jQuery("#chucvuGrid").trigger("reloadGrid");
+                                  jQuery("#chamcongGrid").trigger("reloadGrid");
                               } else {
                                   document.getElementById('dialog_error').innerHTML="<font style='color:red;'>Có lỗi xảy ra " + msg + ". Vui lòng thử lại hoặc liên hệ với hỗ trợ.</font>";
                                   $("#dialog_error" ).dialog({modal: true,buttons:{OK: function(){$( this ).dialog( "close" );}}});blockflag = false;
@@ -366,20 +360,18 @@ $(function() {
 	<form>
 		<table width="100%">
 			<tr>
-				<td align=left><label for="macv_create">Mã công việc<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="macv_create" name="macv_create" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
+				<td align=left><label for="machamcong_create">Mã chấm công<font color="red"> (*)</font></label></td>
+				<td align=left><input type="text" id="machamcong_create" name="machamcong_create" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
 			</tr>
 			<tr>
-				<td align=left><label for="tencv_create">Tên công việc<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="tencv_create" name="tencv_create" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
+				<td align=left><label for="manv_create">Mã nhân viên<font color="red"> (*)</font></label></td>
+				<td align=left><input type="text" id="manv_create" name="manv_create" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
 			</tr>
 			<tr>
-				<td align=left><label for="mapb_create">mã phòng ban<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="mapb_create" name="mapb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
+				<td align=left><label for="ngaychamcong_create">Ngày chấm công<font color="red"> (*)</font></label></td>
+				<td align=left><input type="text" id="ngaychamcong_create" name="ngaychamcong_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
 			</tr>
 			<tr>
-                            <td align=left><label for="congviec_create">công việc<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="congviec_create" name="mapb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 		</table>
 	</form>
@@ -391,20 +383,18 @@ $(function() {
 	<form>
 		<table width="100%">
 			<tr>
-				<td align=left><label for="macv_edit">Mã công việc<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="macv_edit" name="macv_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
+				<td align=left><label for="machamcong_edit">Mã chấm công<font color="red">(*)</font></label></td>
+				<td align=left><input type="text" id="machamcong_edit" name="machamcong_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
 			</tr>
 			<tr>
-				<td align=left><label for="tencv_edit">Tên công việc<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="tencv_edit" name="tencv_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
+				<td align=left><label for="manv_edit">Mã nhân viên<font color="red">(*)</font></label></td>
+				<td align=left><input type="text" id="manv_edit" name="manv_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
 			</tr>
 			<tr>
-				<td align=left><label for="mapb_edit">mã phòng ban<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="mapb_edit" name="mapb_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
+				<td align=left><label for="ngaychamcong_edit">Ngày chấm công<font color="red">(*)</font></label></td>
+				<td align=left><input type="text" id="ngaychamcong_edit" name="ngaychamcong_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
 			</tr>
 			<tr>
-                                <td align=left><label for="congviec_edit">công việc<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="congviec_edit" name="congviec_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="255" /></td>
 			</tr>
 		</table>
 	</form>
@@ -429,21 +419,21 @@ Có lỗi xảy ra. Hãy kiểm tra lại!
 </div>
 <script type="text/javascript">
 	$(document).ready(function(){
-	$("#macv_search").keypress(function(event) {
+	$("#machamcong_search").keypress(function(event) {
 		if ( event.which == 13 ) {
-			reloadchucvuList();
+			reloadchamcongList();
 		}
 	});
-	$("#tencv_search").keypress(function(event) {
+	$("#manv_search").keypress(function(event) {
 		if ( event.which == 13 ) {
-			reloadchucvuList();
+			reloadchamcongList();
 		}
 	});
 	
 	$( "#search" )
 	.button()
 	.click(function() {
-		reloadchucvuList();
+		reloadchamcongList();
 	});//end #search 
 
 

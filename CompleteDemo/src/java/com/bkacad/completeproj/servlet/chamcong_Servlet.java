@@ -5,10 +5,10 @@
  */
 package com.bkacad.completeproj.servlet;
 
-import com.bkacad.completeproj.dao.phongban_Dao;
-import com.bkacad.completeproj.dto.phongban_GetDto;
-import com.bkacad.completeproj.dto.phongban_PostDto;
-import com.bkacad.completeproj.jdbc.phongban_Impl;
+import com.bkacad.completeproj.dao.chamcong_Dao;
+import com.bkacad.completeproj.dto.chamcong_GetDto;
+import com.bkacad.completeproj.dto.chamcong_PostDto;
+import com.bkacad.completeproj.jdbc.chamcong_Impl;
 import com.bkacad.completeproj.util.Constant;
 import com.bkacad.completeproj.util.Util;
 import java.io.IOException;
@@ -18,47 +18,49 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/phongban_Servlet")
-public class phongban_Servlet extends AbstractServlet {
-
+/**
+ *
+ * @author Admin
+ */
+@WebServlet(name = "chamcong_Servlet", urlPatterns = {"/chamcong_Servlet"})
+public class chamcong_Servlet extends AbstractServlet {
     private static final long serialVersionUID = 1L;
 
-    public phongban_Servlet() {
+    public chamcong_Servlet() {
         super();
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//System.out.println("phongban_Servlet: doGet: begin");
+		//System.out.println("chamcong_Servlet: doGet: begin");
 		Connection conn = Util.getStoredConnection(request);
-		phongban_Dao daophongban= new phongban_Impl(conn);
-		phongban_GetDto getDTO = new phongban_GetDto();
+		chamcong_Dao daochamcong= new chamcong_Impl(conn);
+		chamcong_GetDto getDTO = new chamcong_GetDto();
 		initGetDTO(getDTO,request);
 
 		String strResult = "";
-			getDTO.mapb = Util.checkNull(request.getParameter("mapb"));
-			getDTO.tenpb = Util.checkNull(request.getParameter("tenpb"));
-                        getDTO.diachi = Util.checkNull(request.getParameter("diachi"));
-                        getDTO.sdt = Util.checkNull(request.getParameter("sdt"));
-			strResult=daophongban.getXML(getDTO);
+			getDTO.machamcong = Util.checkNull(request.getParameter("machamcong"));
+			getDTO.manv = Util.checkNull(request.getParameter("manv"));
+			getDTO.ngaychamcong = Util.checkNull(request.getParameter("ngaychamcong"));
+			strResult=daochamcong.getXML(getDTO);
 
 		response.setContentType(Constant.CONTENT_TYPE_XML);
 		response.getOutputStream().write(strResult.getBytes());		
-		//System.out.println("phongban_Servlet: doGet: end");
+		//System.out.println("chamcong_Servlet: doGet: end");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			System.out.println("phongban_Servlet: doPost: begin");
+			System.out.println("chamcong_Servlet: doPost: begin");
 			String s=request.getParameter("xml");
-			System.out.println("phongban_Servlet: doPost: s=" + s);
+			System.out.println("chamcong_Servlet: doPost: s=" + s);
 			String method = Util.getTag(s,"<method>","</method>");
 
 			Connection conn = Util.getStoredConnection(request);
-			phongban_Dao daoObj = new phongban_Impl(conn);
-			phongban_PostDto dtoObj = new phongban_PostDto();
+			chamcong_Dao daoObj = new chamcong_Impl(conn);
+			chamcong_PostDto dtoObj = new chamcong_PostDto();
 			dtoObj.xml = s;
 			dtoObj.getDTO();
 
-			System.out.println("phongban_Servlet: doPost: Method=" + method);		
+			System.out.println("chamcong_Servlet: doPost: Method=" + method);		
 			String msg = "success";
 			if (method.equals("update")){
 				msg = daoObj.update(dtoObj);
@@ -70,12 +72,13 @@ public class phongban_Servlet extends AbstractServlet {
 				msg = daoObj.insert(dtoObj);
 			}
 			response.getWriter().println(msg);
-			System.out.println("phongban_Servlet: doPost: End");
+			System.out.println("chamcong_Servlet: doPost: End");
 //		}
 //		else{
 //			response.getWriter().println(Util.toHTML("<ERRDESC>Hết phiên làm việc, hãy đăng nhập lại để thực hiện!<ERRDESC>"));
 //		}
 
 	}
-    
+   
+
 }

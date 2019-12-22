@@ -35,11 +35,11 @@ public class chucvu_Impl implements chucvu_Dao {
             }
 
 
-            String sqlCall = "{ CALL SP_chucvu1_Select(?, ?, ?, ?, ?, ?, ?, ?)}";
+            String sqlCall = "{ CALL SP_chucvu_Select(?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement cs = conn.prepareCall(sqlCall);
             System.out.println("sqlCall=" + sqlCall);
             if(getDTO.macv == null || getDTO.macv.trim().equals(""))
-            	cs.setNull(1, java.sql.Types.INTEGER);
+            	cs.setNull(1, java.sql.Types.VARCHAR);
             else
             	cs.setString(1, getDTO.macv);
             if(getDTO.tencv == null || getDTO.tencv.trim().equals(""))
@@ -94,7 +94,7 @@ public class chucvu_Impl implements chucvu_Dao {
             String sqlCall = "{ CALL SP_chucvu_Update(?, ?, ?, ?, ?, ?, ? )}";
             CallableStatement cs = conn.prepareCall(sqlCall);
             if(postDTO.macv == null || postDTO.macv.trim().equals(""))
-            	cs.setNull(1, java.sql.Types.INTEGER);
+            	cs.setNull(1, java.sql.Types.VARCHAR);
             else
             	cs.setString(1, postDTO.macv);
             if(postDTO.tencv == null || postDTO.tencv.trim().equals(""))

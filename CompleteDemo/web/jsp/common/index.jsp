@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>devmaster.edu.vn</title>
+<title>Quản lý nhân sự</title>
 </head>
 <body>
 <%@ include file = "header.jsp" %>
@@ -16,7 +16,7 @@
 <div style="min-height: 600px; padding: 25px; background-color: #FFFFFF">
 	<font size="8" style="align: center">
 		<br><br><br>
-		<center>HỌC VIỆN DEVMASTER</center><br><br><br>
+		<center>QUẢN LÝ NHÂN SỰ</center><br><br><br>
 		<center>CHƯƠNG TRÌNH DEMO</center><br> 
 	</font>
 </div>

@@ -4,7 +4,7 @@
 
 <html >
   <head>
-    <title>devmaster.edu.vn</title>
+    <title>Quản lý nhân sự</title>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css">
     <script src="<%=request.getContextPath()%>/js/prefixfree.min.js"></script>
     <script type="text/javascript"

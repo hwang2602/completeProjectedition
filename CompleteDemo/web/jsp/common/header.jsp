@@ -66,7 +66,7 @@ try {
 		<nav>
 			<ul class="nav">
 					<li><a href="${pageContext.request.contextPath}/home" class="icon home"><span>Home</span></a></li>
-					<li class="dropdown"><a href="#">Hệ thống</a>
+					<li class="dropdown"><a href="#">Hệ thống</a>
 						<ul class="large">
 							<li><a href="#">Reset mật khẩu</a></li>
 						</ul>
