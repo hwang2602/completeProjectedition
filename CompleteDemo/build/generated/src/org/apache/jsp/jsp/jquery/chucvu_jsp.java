@@ -302,8 +302,8 @@ try {
       out.write("\t\t\t\t    <td align=left><input type=\"text\" id=\"tencv_search\" name=\"tencv_search\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"\" /></td>\n");
       out.write("\t\t\t\t    </tr>\n");
       out.write("\t\t\t\t    <tr> \n");
-      out.write("\t\t\t\t    <td align=right><label for=\"hesoluong_search\">Hệ số lương</label></td>\n");
-      out.write("\t\t\t\t    <td align=left><input type=\"text\" id=\"hesoluong_search\" name=\"hesoluong_search\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"\" /></td>\n");
+      out.write("\t\t\t\t    <td align=right><label for=\"mapb_search\">Mã phòng ban</label></td>\n");
+      out.write("\t\t\t\t    <td align=left><input type=\"text\" id=\"mapb_search\" name=\"mapb_search\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"\" /></td>\n");
       out.write("\t\t\t\t    </tr>\n");
       out.write("\t\t\t\t    <tr>\n");
       out.write("\t\t\t\t        <td></td>\n");
@@ -344,7 +344,7 @@ try {
       out.write("  var params = \"\";\n");
       out.write("  params += \"macv=\" + $(\"#macv_search\").val();\n");
       out.write("  params += \"&tencv=\" + $(\"#tencv_search\").val();\n");
-      out.write("  params += \"&hesoluong=\" + $(\"#hesoluong_search\").val();\n");
+      out.write("  params += \"&mapb=\" + $(\"#mapb_search\").val();\n");
       out.write("  jQuery(\"#chucvuGrid\").setGridParam({ url:\"");
       out.print(request.getContextPath() );
       out.write("/chucvu_Servlet?\" + params});\n");
@@ -356,7 +356,7 @@ try {
       out.write("{\n");
       out.write("\t$(\"#macv_create\").val(\"\");\n");
       out.write("\t$(\"#tencv_create\").val(\"\");\n");
-      out.write("\t$(\"#hesoluong_create\").val(\"\");\n");
+      out.write("\t$(\"#mapb_create\").val(\"\");\n");
       out.write("        $(\"#congviec_create\").val(\"\");\n");
       out.write("}\n");
       out.write("\n");
@@ -364,8 +364,8 @@ try {
       out.write("\t var macv = trim($(\"#macv_create\").val());\n");
       out.write("\t var tencv = trim($(\"#tencv_create\").val()); \n");
       out.write("\t var congviec = trim($(\"#congviec_create\").val());\n");
-      out.write("         var hesoluong = trim($(\"#hesoluong_create\").val());\n");
-      out.write("\t if (!((macv == \"\") || (tencv == \"\") || (congviec == \"\") || (hesoluong == \"\") )) { \n");
+      out.write("         var mapb = trim($(\"#mapb_create\").val());\n");
+      out.write("\t if (!((macv == \"\") || (tencv == \"\") || (congviec == \"\") || (mapb == \"\") )) { \n");
       out.write("\t\t return true; \n");
       out.write("\t} \n");
       out.write("} \n");
@@ -373,9 +373,9 @@ try {
       out.write("function isValidForm_edit() {\n");
       out.write("\t var macv = trim($(\"#macv_edit\").val()); \n");
       out.write("\t var tencv = trim($(\"#tencv_edit\").val()); \n");
-      out.write("\t var hesoluong = trim($(\"#hesoluong_edit\").val()); \n");
+      out.write("\t var mapb = trim($(\"#mapb_edit\").val()); \n");
       out.write("         var congviec = trim($(\"#congviec_create\").val());\n");
-      out.write("\t if (!((macv == \"\") || (tencv == \"\") || (hesoluong == \"\") || (congviec == \"\"))) { \n");
+      out.write("\t if (!((macv == \"\") || (tencv == \"\") || (mapb == \"\") || (congviec == \"\"))) { \n");
       out.write("\t\t return true; \n");
       out.write("\t} \n");
       out.write("} \n");
@@ -400,7 +400,7 @@ try {
       out.write("          {name:'STT',index:'STT', width:80, align:\"center\"},\n");
       out.write("          {name:'macv',index:'macv', width:100},\n");
       out.write("          {name:'tencv',index:'tencv', width:200},\n");
-      out.write("          {name:'hesoluong',index:'hesoluong', width:100},\n");
+      out.write("          {name:'mapb',index:'mapb', width:100},\n");
       out.write("          {name:'congviec',index:'congviec', width:100, align:\"right\"}\n");
       out.write("      ],\n");
       out.write("      rowNum:15,  rowList:[15,30,60,80,150], pager: '#Pager1', \n");
@@ -410,7 +410,7 @@ try {
       out.write("      width:800,\n");
       out.write("      shrinkToFit:false,\n");
       out.write("      caption: \" Danh sách chucvu\",\n");
-      out.write("      sortname: 'hesoluong', viewrecords: true, sortorder: \"desc\"\n");
+      out.write("      sortname: 'mapb', viewrecords: true, sortorder: \"desc\"\n");
       out.write("\n");
       out.write("  }).navGrid('#Pager1',{edit:false,add:false,del:false,search:false,refresh:true,view:false,position:\"left\",cloneToTop:true});\n");
       out.write("\n");
@@ -439,7 +439,7 @@ try {
       out.write("                                  url: \"");
       out.print(request.getContextPath());
       out.write("/chucvu_Servlet\",\n");
-      out.write("                                  data: {\"xml\":\"<doc><method>create</method><macv>\" + $(\"#macv_create\").val()+\"</macv><tencv>\" + $(\"#tencv_create\").val()+\"</tencv><hesoluong>\" + $(\"#hesoluong_create\").val()+\"</hesoluong><congviec>\" + $(\"#congviec_create\").val()+\"</congviec></doc>\"},\n");
+      out.write("                                  data: {\"xml\":\"<doc><method>create</method><macv>\" + $(\"#macv_create\").val()+\"</macv><tencv>\" + $(\"#tencv_create\").val()+\"</tencv><mapb>\" + $(\"#mapb_create\").val()+\"</mapb><congviec>\" + $(\"#congviec_create\").val()+\"</congviec></doc>\"},\n");
       out.write("                                  error: function(){\n");
       out.write("                                      $( \"#dialog_error\" ).dialog({\n");
       out.write("                                          modal: true,\n");
@@ -505,7 +505,7 @@ try {
       out.write("                                  url: \"");
       out.print(request.getContextPath());
       out.write("/chucvu_Servlet\",\n");
-      out.write("                                  data: {\"xml\":\"<doc><method>update</method><macv>\" + $(\"#macv_edit\").val()+\"</macv><tencv>\" + $(\"#tencv_edit\").val()+\"</tencv><hesoluong>\" + $(\"#hesoluong_edit\").val()+\"</hesoluong><congviec>\" + $(\"#congviec_edit\").val()+\"</congviec></doc>\"},\n");
+      out.write("                                  data: {\"xml\":\"<doc><method>update</method><macv>\" + $(\"#macv_edit\").val()+\"</macv><tencv>\" + $(\"#tencv_edit\").val()+\"</tencv><mapb>\" + $(\"#mapb_edit\").val()+\"</mapb><congviec>\" + $(\"#congviec_edit\").val()+\"</congviec></doc>\"},\n");
       out.write("                                  error: function(){\n");
       out.write("\n");
       out.write("                                      $( \"#dialog_error\" ).dialog({\n");
@@ -549,7 +549,7 @@ try {
       out.write("              var ret = jQuery(\"#chucvuGrid\").jqGrid('getRowData',id);\n");
       out.write("          $(\"#macv_edit\").val(ret.macv);\n");
       out.write("          $(\"#tencv_edit\").val(ret.tencv);\n");
-      out.write("          $(\"#hesoluong_edit\").val(ret.hesoluong);\n");
+      out.write("          $(\"#mapb_edit\").val(ret.mapb);\n");
       out.write("          $(\"#congviec_edit\").val(ret.congviec);\n");
       out.write("          $(\"#dialog_form_edit\" ).dialog( \"open\" ); \n");
       out.write("          } else {\n");
@@ -585,7 +585,7 @@ try {
       out.write("                          url: \"");
       out.print(request.getContextPath());
       out.write("/chucvu_Servlet\",\n");
-      out.write("                          data: {\"xml\":\"<doc><method>delete</method><macv>\" + ret.macv + \"</macv><tencv>\" + $(\"#tencv_edit\").val()+\"</tencv><hesoluong>\" + $(\"#hesoluong_edit\").val()+\"</hesoluong><congviec>\" + $(\"#congviec_edit\").val()+\"</congviec></doc>\"},\n");
+      out.write("                          data: {\"xml\":\"<doc><method>delete</method><macv>\" + ret.macv + \"</macv><tencv>\" + $(\"#tencv_edit\").val()+\"</tencv><mapb>\" + $(\"#mapb_edit\").val()+\"</mapb><congviec>\" + $(\"#congviec_edit\").val()+\"</congviec></doc>\"},\n");
       out.write("                          error: function(){\n");
       out.write("                              $( \"#dialog_error\" ).dialog({\n");
       out.write("                                  modal: true,\n");
@@ -643,12 +643,12 @@ try {
       out.write("\t\t\t\t<td align=left><input type=\"text\" id=\"tencv_create\" name=\"tencv_create\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"128\" /></td>\n");
       out.write("\t\t\t</tr>\n");
       out.write("\t\t\t<tr>\n");
-      out.write("\t\t\t\t<td align=left><label for=\"hesoluong_create\">hệ số lương<font color=\"red\"> (*)</font></label></td>\n");
-      out.write("\t\t\t\t<td align=left><input type=\"text\" id=\"hesoluong_create\" name=\"hesoluong_create\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"8\" /></td>\n");
+      out.write("\t\t\t\t<td align=left><label for=\"mapb_create\">hệ số lương<font color=\"red\"> (*)</font></label></td>\n");
+      out.write("\t\t\t\t<td align=left><input type=\"text\" id=\"mapb_create\" name=\"mapb_create\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"8\" /></td>\n");
       out.write("\t\t\t</tr>\n");
       out.write("\t\t\t<tr>\n");
       out.write("                            <td align=left><label for=\"congviec_create\">công việc<font color=\"red\"> (*)</font></label></td>\n");
-      out.write("\t\t\t\t<td align=left><input type=\"text\" id=\"congviec_create\" name=\"hesoluong_create\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"8\" /></td>\n");
+      out.write("\t\t\t\t<td align=left><input type=\"text\" id=\"congviec_create\" name=\"mapb_create\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"8\" /></td>\n");
       out.write("\t\t\t</tr>\n");
       out.write("\t\t</table>\n");
       out.write("\t</form>\n");
@@ -668,8 +668,8 @@ try {
       out.write("\t\t\t\t<td align=left><input type=\"text\" id=\"tencv_edit\" name=\"tencv_edit\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"128\" /></td>\n");
       out.write("\t\t\t</tr>\n");
       out.write("\t\t\t<tr>\n");
-      out.write("\t\t\t\t<td align=left><label for=\"hesoluong_edit\">hệ số lương<font color=\"red\">(*)</font></label></td>\n");
-      out.write("\t\t\t\t<td align=left><input type=\"text\" id=\"hesoluong_edit\" name=\"hesoluong_edit\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"8\" /></td>\n");
+      out.write("\t\t\t\t<td align=left><label for=\"mapb_edit\">hệ số lương<font color=\"red\">(*)</font></label></td>\n");
+      out.write("\t\t\t\t<td align=left><input type=\"text\" id=\"mapb_edit\" name=\"mapb_edit\" value=\"\" class=\"text ui-widget-content ui-corner-all\" maxlength=\"8\" /></td>\n");
       out.write("\t\t\t</tr>\n");
       out.write("\t\t\t<tr>\n");
       out.write("                                <td align=left><label for=\"congviec_edit\">công việc<font color=\"red\">(*)</font></label></td>\n");

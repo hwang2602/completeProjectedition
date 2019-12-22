@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBUtil {
 	public static Connection getSqlConn() throws SQLException{
 		Connection conn = null;
-		String strConnection = "jdbc:sqlserver://localhost:1433;databaseName=Jsp1501;user=sa;password=1234";
+		String strConnection = "jdbc:sqlserver://localhost:1433;databaseName=doan2QLnhansu;user=sa;password=1234";
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			conn = DriverManager.getConnection(strConnection);

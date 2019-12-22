@@ -13,6 +13,6 @@ public class chucvu_GetDto extends GetDTO{
     public String macv;
     public String tencv;
     public String congviec;
-    public String hesoluong;
+    public String mapb;
 
 }

@@ -46,10 +46,10 @@ public class chucvu_Impl implements chucvu_Dao {
             	cs.setNull(2, java.sql.Types.NVARCHAR);
             else
             	cs.setString(2, getDTO.tencv);
-            if(getDTO.hesoluong == null || getDTO.hesoluong.trim().equals(""))
-            	cs.setNull(7, java.sql.Types.FLOAT);
+            if(getDTO.mapb == null || getDTO.mapb.trim().equals(""))
+            	cs.setNull(7, java.sql.Types.VARCHAR);
             else
-            	cs.setFloat(7, Float.parseFloat(getDTO.hesoluong));
+            	cs.setString(7, getDTO.mapb);
             if(getDTO.congviec == null || getDTO.congviec.trim().equals(""))
             	cs.setNull(8, java.sql.Types.NVARCHAR);
             else
@@ -77,7 +77,7 @@ public class chucvu_Impl implements chucvu_Dao {
             l.add("STT");
             l.add("macv");
             l.add("tencv");
-            l.add("hesoluong");
+            l.add("mapb");
             l.add("congviec");
             StringBuilder sb = Util.buildDataGridXml(rs, l);
 
@@ -101,10 +101,10 @@ public class chucvu_Impl implements chucvu_Dao {
             	cs.setNull(2, java.sql.Types.NVARCHAR);
             else
             	cs.setString(2, postDTO.tencv);
-            if(postDTO.hesoluong == null || postDTO.hesoluong.trim().equals(""))
-            	cs.setNull(4, java.sql.Types.FLOAT);
+            if(postDTO.mapb == null || postDTO.mapb.trim().equals(""))
+            	cs.setNull(4, java.sql.Types.VARCHAR);
             else
-            	cs.setString(4, postDTO.hesoluong);
+            	cs.setString(4, postDTO.mapb);
             if(postDTO.congviec == null || postDTO.congviec.trim().equals(""))
             	cs.setNull(3, java.sql.Types.NVARCHAR);
             else

@@ -55,8 +55,8 @@
 				    <td align=left><input type="text" id="tencv_search" name="tencv_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
 				    </tr>
 				    <tr> 
-				    <td align=right><label for="hesoluong_search">Hệ số lương</label></td>
-				    <td align=left><input type="text" id="hesoluong_search" name="hesoluong_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
+				    <td align=right><label for="mapb_search">Mã phòng ban</label></td>
+				    <td align=left><input type="text" id="mapb_search" name="mapb_search" value="" class="text ui-widget-content ui-corner-all" maxlength="" /></td>
 				    </tr>
 				    <tr>
 				        <td></td>
@@ -85,7 +85,7 @@ function reloadchucvuList()
   var params = "";
   params += "macv=" + $("#macv_search").val();
   params += "&tencv=" + $("#tencv_search").val();
-  params += "&hesoluong=" + $("#hesoluong_search").val();
+  params += "&mapb=" + $("#mapb_search").val();
   jQuery("#chucvuGrid").setGridParam({ url:"<%=request.getContextPath() %>/chucvu_Servlet?" + params});
   jQuery("#chucvuGrid").clearGridData();
   jQuery("#chucvuGrid").trigger("reloadGrid");
@@ -95,7 +95,7 @@ function clear_create()
 {
 	$("#macv_create").val("");
 	$("#tencv_create").val("");
-	$("#hesoluong_create").val("");
+	$("#mapb_create").val("");
         $("#congviec_create").val("");
 }
 
@@ -103,8 +103,8 @@ function isValidForm_create() {
 	 var macv = trim($("#macv_create").val());
 	 var tencv = trim($("#tencv_create").val()); 
 	 var congviec = trim($("#congviec_create").val());
-         var hesoluong = trim($("#hesoluong_create").val());
-	 if (!((macv == "") || (tencv == "") || (congviec == "") || (hesoluong == "") )) { 
+         var mapb = trim($("#mapb_create").val());
+	 if (!((macv == "") || (tencv == "") || (congviec == "") || (mapb == "") )) { 
 		 return true; 
 	} 
 } 
@@ -112,9 +112,9 @@ function isValidForm_create() {
 function isValidForm_edit() {
 	 var macv = trim($("#macv_edit").val()); 
 	 var tencv = trim($("#tencv_edit").val()); 
-	 var hesoluong = trim($("#hesoluong_edit").val()); 
+	 var mapb = trim($("#mapb_edit").val()); 
          var congviec = trim($("#congviec_create").val());
-	 if (!((macv == "") || (tencv == "") || (hesoluong == "") || (congviec == ""))) { 
+	 if (!((macv == "") || (tencv == "") || (mapb == "") || (congviec == ""))) { 
 		 return true; 
 	} 
 } 
@@ -132,12 +132,12 @@ $(function() {
   jQuery("#chucvuGrid").jqGrid({ 
       url:'<%=request.getContextPath() %>/chucvu_Servlet', 
       datatype: "xml", 
-      colNames:['STT', 'Mã chức vụ', 'Tên chức vụ', 'hệ số lương', 'công việc'], 
+      colNames:['STT', 'Mã chức vụ', 'Tên chức vụ', 'mã phòng ban', 'công việc'], 
       colModel:[
           {name:'STT',index:'STT', width:80, align:"center"},
           {name:'macv',index:'macv', width:100},
           {name:'tencv',index:'tencv', width:200},
-          {name:'hesoluong',index:'hesoluong', width:100},
+          {name:'mapb',index:'mapb', width:100},
           {name:'congviec',index:'congviec', width:100, align:"right"}
       ],
       rowNum:15,  rowList:[15,30,60,80,150], pager: '#Pager1', 
@@ -147,7 +147,7 @@ $(function() {
       width:800,
       shrinkToFit:false,
       caption: " Danh sách chucvu",
-      sortname: 'hesoluong', viewrecords: true, sortorder: "desc"
+      sortname: 'mapb', viewrecords: true, sortorder: "desc"
 
   }).navGrid('#Pager1',{edit:false,add:false,del:false,search:false,refresh:true,view:false,position:"left",cloneToTop:true});
 
@@ -174,7 +174,7 @@ $(function() {
                               $.ajax({
                                   type: "POST",
                                   url: "<%=request.getContextPath()%>/chucvu_Servlet",
-                                  data: {"xml":"<doc><method>create</method><macv>" + $("#macv_create").val()+"</macv><tencv>" + $("#tencv_create").val()+"</tencv><hesoluong>" + $("#hesoluong_create").val()+"</hesoluong><congviec>" + $("#congviec_create").val()+"</congviec></doc>"},
+                                  data: {"xml":"<doc><method>create</method><macv>" + $("#macv_create").val()+"</macv><tencv>" + $("#tencv_create").val()+"</tencv><mapb>" + $("#mapb_create").val()+"</mapb><congviec>" + $("#congviec_create").val()+"</congviec></doc>"},
                                   error: function(){
                                       $( "#dialog_error" ).dialog({
                                           modal: true,
@@ -238,7 +238,7 @@ $(function() {
                               $.ajax({
                                   type: "POST",
                                   url: "<%=request.getContextPath()%>/chucvu_Servlet",
-                                  data: {"xml":"<doc><method>update</method><macv>" + $("#macv_edit").val()+"</macv><tencv>" + $("#tencv_edit").val()+"</tencv><hesoluong>" + $("#hesoluong_edit").val()+"</hesoluong><congviec>" + $("#congviec_edit").val()+"</congviec></doc>"},
+                                  data: {"xml":"<doc><method>update</method><macv>" + $("#macv_edit").val()+"</macv><tencv>" + $("#tencv_edit").val()+"</tencv><mapb>" + $("#mapb_edit").val()+"</mapb><congviec>" + $("#congviec_edit").val()+"</congviec></doc>"},
                                   error: function(){
 
                                       $( "#dialog_error" ).dialog({
@@ -282,7 +282,7 @@ $(function() {
               var ret = jQuery("#chucvuGrid").jqGrid('getRowData',id);
           $("#macv_edit").val(ret.macv);
           $("#tencv_edit").val(ret.tencv);
-          $("#hesoluong_edit").val(ret.hesoluong);
+          $("#mapb_edit").val(ret.mapb);
           $("#congviec_edit").val(ret.congviec);
           $("#dialog_form_edit" ).dialog( "open" ); 
           } else {
@@ -316,7 +316,7 @@ $(function() {
                       $.ajax({
                           type: "POST",
                           url: "<%=request.getContextPath()%>/chucvu_Servlet",
-                          data: {"xml":"<doc><method>delete</method><macv>" + ret.macv + "</macv><tencv>" + $("#tencv_edit").val()+"</tencv><hesoluong>" + $("#hesoluong_edit").val()+"</hesoluong><congviec>" + $("#congviec_edit").val()+"</congviec></doc>"},
+                          data: {"xml":"<doc><method>delete</method><macv>" + ret.macv + "</macv><tencv>" + $("#tencv_edit").val()+"</tencv><mapb>" + $("#mapb_edit").val()+"</mapb><congviec>" + $("#congviec_edit").val()+"</congviec></doc>"},
                           error: function(){
                               $( "#dialog_error" ).dialog({
                                   modal: true,
@@ -374,12 +374,12 @@ $(function() {
 				<td align=left><input type="text" id="tencv_create" name="tencv_create" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
 			</tr>
 			<tr>
-				<td align=left><label for="hesoluong_create">hệ số lương<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="hesoluong_create" name="hesoluong_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><label for="mapb_create">mã phòng ban<font color="red"> (*)</font></label></td>
+				<td align=left><input type="text" id="mapb_create" name="mapb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
 			</tr>
 			<tr>
                             <td align=left><label for="congviec_create">công việc<font color="red"> (*)</font></label></td>
-				<td align=left><input type="text" id="congviec_create" name="hesoluong_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><input type="text" id="congviec_create" name="mapb_create" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
 			</tr>
 		</table>
 	</form>
@@ -399,8 +399,8 @@ $(function() {
 				<td align=left><input type="text" id="tencv_edit" name="tencv_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
 			</tr>
 			<tr>
-				<td align=left><label for="hesoluong_edit">hệ số lương<font color="red">(*)</font></label></td>
-				<td align=left><input type="text" id="hesoluong_edit" name="hesoluong_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
+				<td align=left><label for="mapb_edit">mã phòng ban<font color="red">(*)</font></label></td>
+				<td align=left><input type="text" id="mapb_edit" name="mapb_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="8" /></td>
 			</tr>
 			<tr>
                                 <td align=left><label for="congviec_edit">công việc<font color="red">(*)</font></label></td>
