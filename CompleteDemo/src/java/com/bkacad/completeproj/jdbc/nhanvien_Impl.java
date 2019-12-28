@@ -46,7 +46,7 @@ public class nhanvien_Impl implements nhanvien_Dao{
             else
             	cs.setString(1, getDTO.manv);
             if(getDTO.hoten == null || getDTO.hoten.trim().equals(""))
-            	cs.setNull(2, java.sql.Types.VARCHAR);
+            	cs.setNull(2, java.sql.Types.NVARCHAR);
             else
             	cs.setString(2, getDTO.hoten);
             if(getDTO.ngaysinh == null || getDTO.ngaysinh.trim().equals(""))

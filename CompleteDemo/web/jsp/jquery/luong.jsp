@@ -422,10 +422,10 @@ $(function() {
                             <td align=left><label for="baohiem_create">bảo hiểm<font color="red"> (*)</font></label></td>
 				<td align=left><input type="text" id="baohiem_create" name="baohiem_create" value="" class="text ui-widget-content ui-corner-all" maxlength="15" /></td>
 			</tr>
-                        <tr>
+<!--                        <tr>
                             <td align=left><label for="tong_create">tổng<font color="red"> (*)</font></label></td>
 				<td align=left><input type="text" id="tong_create" name="tong_create" value="" class="text ui-widget-content ui-corner-all" maxlength="15" /></td>
-			</tr>
+			</tr>-->
                         <tr>
                             <td align=left><label for="ngaylinh_create">ngày lĩnh<font color="red"> (*)</font></label></td>
 				<td align=left><input type="text" id="ngaylinh_create" name="ngaylinh_create" value="" class="text ui-widget-content ui-corner-all" maxlength="15" /></td>
@@ -467,10 +467,10 @@ $(function() {
                             <td align=left><label for="baohiem_edit">bảo hiểm<font color="red"> (*)</font></label></td>
 				<td align=left><input type="text" id="baohiem_edit" name="baohiem_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="15" /></td>
 			</tr>
-                        <tr>
+<!--                        <tr>
                             <td align=left><label for="tong_edit">tổng<font color="red"> (*)</font></label></td>
 				<td align=left><input type="text" id="tong_edit" name="tong_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="15" /></td>
-			</tr>
+			</tr>-->
                         <tr>
                             <td align=left><label for="ngaylinh_edit">ngày lĩnh<font color="red"> (*)</font></label></td>
 				<td align=left><input type="text" id="ngaylinh_edit" name="ngaylinh_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="15" /></td>

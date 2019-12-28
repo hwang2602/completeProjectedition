@@ -44,7 +44,7 @@ public class luong_Impl implements luong_Dao{
             if(getDTO.ma == null || getDTO.ma.trim().equals(""))
             	cs.setNull(1, java.sql.Types.INTEGER);
             else
-            	cs.setString(1, getDTO.ma);
+            	cs.setInt(1,  Integer.parseInt(getDTO.ma));
             if(getDTO.manv == null || getDTO.manv.trim().equals(""))
             	cs.setNull(2, java.sql.Types.VARCHAR);
             else
@@ -123,7 +123,7 @@ public class luong_Impl implements luong_Dao{
             String sqlCall = "{ CALL SP_luong_Update(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             CallableStatement cs = conn.prepareCall(sqlCall);
             if(postDTO.ma == null || postDTO.ma.trim().equals(""))
-            	cs.setNull(1, java.sql.Types.INTEGER);
+            	cs.setNull(1, java.sql.Types.VARCHAR);
             else
             	cs.setString(1, postDTO.ma);
             if(postDTO.manv == null || postDTO.manv.trim().equals(""))
@@ -131,31 +131,31 @@ public class luong_Impl implements luong_Dao{
             else
             	cs.setString(2, postDTO.manv);
             if(postDTO.luongcoban == null || postDTO.luongcoban.trim().equals(""))
-            	cs.setNull(3, java.sql.Types.DECIMAL);
+            	cs.setNull(3, java.sql.Types.VARCHAR);
             else
             	cs.setString(3, postDTO.luongcoban);
             if(postDTO.phucap == null || postDTO.phucap.trim().equals(""))
-            	cs.setNull(4, java.sql.Types.DECIMAL);
+            	cs.setNull(4, java.sql.Types.VARCHAR);
             else
             	cs.setString(4, postDTO.phucap);
             if(postDTO.tienthuong == null || postDTO.tienthuong.trim().equals(""))
-            	cs.setNull(5, java.sql.Types.DECIMAL);
+            	cs.setNull(5, java.sql.Types.VARCHAR);
             else
             	cs.setString(5, postDTO.tienthuong);
             if(postDTO.baohiem == null || postDTO.baohiem.trim().equals(""))
-            	cs.setNull(6, java.sql.Types.DECIMAL);
+            	cs.setNull(6, java.sql.Types.VARCHAR);
             else
             	cs.setString(6, postDTO.baohiem);
             if(postDTO.tong == null || postDTO.tong.trim().equals(""))
-            	cs.setNull(7, java.sql.Types.DECIMAL);
+            	cs.setNull(7, java.sql.Types.VARCHAR);
             else
             	cs.setString(7, postDTO.tong);
             if(postDTO.ngaylinh == null || postDTO.ngaylinh.trim().equals(""))
-            	cs.setNull(8, java.sql.Types.DATE);
+            	cs.setNull(8, java.sql.Types.VARCHAR);
             else
             	cs.setString(8, postDTO.ngaylinh);
              if(postDTO.ghichu == null || postDTO.ghichu.trim().equals(""))
-            	cs.setNull(9, java.sql.Types.NVARCHAR);
+            	cs.setNull(9, java.sql.Types.VARCHAR);
             else
             	cs.setString(9, postDTO.ghichu);
             

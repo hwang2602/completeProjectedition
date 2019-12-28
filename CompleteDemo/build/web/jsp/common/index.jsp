@@ -17,8 +17,12 @@
 	<font size="8" style="align: center">
 		<br><br><br>
 		<center>QUẢN LÝ NHÂN SỰ</center><br><br><br>
-		<center>CHƯƠNG TRÌNH DEMO</center><br> 
+		<center>ĐỒ ÁN 2: TIN HỌC QUẢN LÝ</center><br> 
+                <br><br><br>
+                <center><img src="${pageContext.request.contextPath}/images/sami.png" title="Viện toán ứng dụng và tin học"></center>
 	</font>
+    
+    
 </div>
 
 <%@ include file = "footer.jsp" %>

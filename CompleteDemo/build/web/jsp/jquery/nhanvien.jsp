@@ -503,6 +503,11 @@ type="text/javascript"></script>
                 reloadnhanvienList();
             }
         });
+        $("#gioitinh_search").keypress(function (event) {
+            if (event.which == 13) {
+                reloadnhanvienList();
+            }
+        });
 
         $("#search")
                 .button()

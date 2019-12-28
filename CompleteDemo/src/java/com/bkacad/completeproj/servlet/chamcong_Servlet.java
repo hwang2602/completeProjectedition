@@ -40,7 +40,8 @@ public class chamcong_Servlet extends AbstractServlet {
 		String strResult = "";
 			getDTO.machamcong = Util.checkNull(request.getParameter("machamcong"));
 			getDTO.manv = Util.checkNull(request.getParameter("manv"));
-			getDTO.ngaychamcong = Util.checkNull(request.getParameter("ngaychamcong"));
+                        getDTO.ngaychamcong = Util.checkNull(request.getParameter("ngaychamcong"));
+                        getDTO.trangthai = Util.checkNull(request.getParameter("trangthai"));
 			strResult=daochamcong.getXML(getDTO);
 
 		response.setContentType(Constant.CONTENT_TYPE_XML);

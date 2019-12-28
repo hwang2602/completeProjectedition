@@ -47,7 +47,7 @@ public class nhanvien_Servlet extends AbstractServlet {
                         getDTO.macv = Util.checkNull(request.getParameter("macv"));
 			
 			strResult=daonhanvien.getXML(getDTO);
-
+                        System.out.println(getDTO.hoten);
 		response.setContentType(Constant.CONTENT_TYPE_XML);
 		response.getOutputStream().write(strResult.getBytes());		
 		//System.out.println("nhanvien_Servlet: doGet: end");

@@ -11,11 +11,9 @@ import com.bkacad.completeproj.dto.chamcong_PostDto;
 import com.bkacad.completeproj.util.Util;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Vector;
 
@@ -56,7 +54,7 @@ public class chamcong_Impl implements chamcong_Dao {
             if (getDTO.machamcong == null || getDTO.machamcong.trim().equals("")) {
                 cs.setNull(1, java.sql.Types.INTEGER);
             } else {
-                cs.setString(1, getDTO.machamcong);
+                cs.setInt(1, Integer.parseInt(getDTO.machamcong));
             }
             if (getDTO.manv == null || getDTO.manv.trim().equals("")) {
                 cs.setNull(2, java.sql.Types.VARCHAR);
@@ -69,7 +67,7 @@ public class chamcong_Impl implements chamcong_Dao {
                 cs.setString(7, getDTO.ngaychamcong);
             }
             if (getDTO.trangthai == null || getDTO.trangthai.trim().equals("")) {
-                cs.setNull(8, java.sql.Types.DATE);
+                cs.setNull(8, java.sql.Types.NVARCHAR);
             } else {
                 cs.setString(8, getDTO.trangthai);
             }
@@ -116,7 +114,7 @@ public class chamcong_Impl implements chamcong_Dao {
             String sqlCall = "{ CALL SP_chamcong_Update(?, ?, ?, ?, ?, ?, ? )}";
             CallableStatement cs = conn.prepareCall(sqlCall);
             if (postDTO.machamcong == null || postDTO.machamcong.trim().equals("")) {
-                cs.setNull(1, java.sql.Types.INTEGER);
+                cs.setNull(1, java.sql.Types.VARCHAR);
             } else {
                 cs.setString(1, postDTO.machamcong);
             }
@@ -126,7 +124,7 @@ public class chamcong_Impl implements chamcong_Dao {
                 cs.setString(2, postDTO.manv);
             }
             if (postDTO.ngaychamcong == null || postDTO.ngaychamcong.trim().equals("")) {
-                cs.setNull(3, java.sql.Types.DATE);
+                cs.setNull(3, java.sql.Types.VARCHAR);
             } else {
                 cs.setString(3, postDTO.ngaychamcong);
             }

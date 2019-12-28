@@ -99,25 +99,24 @@ function reloadluongList()
 
 function clear_create()
 {
-	
+	$("#ma_create").val("");
 	$("#manv_create").val("");
 	$("#luongcoban_create").val("");
         $("#phucap_create").val("");
         $("#tienthuong_create").val("");
         $("#baohiem_create").val("");
-        
+        $("#tong_create").val("");
         $("#ngaylinh_create").val("");
         $("#ghichu_create").val("");
 }
 
 function isValidForm_create() {
-	 
-	 var manv = trim($("#manv_create").val()); 
+//	 var manv = trim($("#manv_create").val()); 
 	 var luongcoban = trim($("#luongcoban_create").val());
          var phucap = trim($("#phucap_create").val());
          var tienthuong = trim($("#tienthuong_create").val());
          var baohiem = trim($("#baohiem_create").val());
-         
+//         var tong = trim($("#tong_create").val());
          var ngaylinh = trim($("#ngaylinh_create").val());
          var ghichu = trim($("#ghichu_create").val());
 	 if (!((manv == "") || (luongcoban == "") || (phucap == "") || (tienthuong == "") || (baohiem == "") || (ngaylinh == "") || (ghichu == ""))) { 
@@ -126,16 +125,16 @@ function isValidForm_create() {
 } 
 
 function isValidForm_edit() {
-	 
+	 var ma = trim($("#ma_edit").val()); 
 	 var manv = trim($("#manv_edit").val()); 
 	 var luongcoban = trim($("#luongcoban_edit").val()); 
          var phucap = trim($("#phucap_edit").val());
          var tienthuong = trim($("#tienthuong_edit").val());
          var baohiem = trim($("#baohiem_edit").val());
-        
+         var tong = trim($("#tong_edit").val());
          var ngaylinh = trim($("#ngaylinh_edit").val());
          var ghichu = trim($("#ghichu_edit").val());
-	 if (!((manv == "") || (luongcoban == "") || (phucap == "") || (tienthuong == "") || (baohiem == "") || (ngaylinh == "") || (ghichu == ""))) { 
+	 if (!((ma == "") || (manv == "") || (luongcoban == "") || (phucap == "") || (tienthuong == "") || (baohiem == "") || (tong == "") || (ngaylinh == "") || (ghichu == ""))) { 
 		 return true; 
 	} 
 } 
@@ -155,9 +154,9 @@ $(function() {
       datatype: "xml", 
       colNames:['STT', 'Mã số lương', 'Mã nhân viên', 'Lương cơ bản', 'Phụ cấp', 'Tiền thưởng', 'Bảo hiểm', 'Tổng', 'Ngày lĩnh', 'Ghi chú'], 
       colModel:[
-          {name:'STT',index:'STT', width:80, align:"center"},
-          {name:'ma',index:'ma', width:100},
-          {name:'manv',index:'manv', width:200},
+          {name:'STT',index:'STT', width:50, align:"center"},
+          {name:'ma',index:'ma', width:90},
+          {name:'manv',index:'manv', width:90},
           {name:'luongcoban',index:'luongcoban', width:100, align:"right"},
           {name:'phucap',index:'phucap', width:100, align:"right"},
           {name:'tienthuong',index:'tienthuong', width:100, align:"right"},
@@ -172,7 +171,7 @@ $(function() {
       scrollrows: true,
       autowidth: false,
       height: 400,
-      width:800,
+      width:1000,
       shrinkToFit:false,
       caption: " Danh sách lương",
       sortname: 'manv', viewrecords: true, sortorder: "desc"
@@ -202,7 +201,7 @@ $(function() {
                               $.ajax({
                                   type: "POST",
                                   url: "<%=request.getContextPath()%>/luong_Servlet",
-                                  data: {"xml":"<doc><method>create</method><ma>" + $("#ma_create").val()+"</ma><manv>" + $("#manv_create").val()+"</manv><luongcoban>" + $("#luongcoban_create").val()+"</luongcoban><phucap>" + $("#phucap_create").val()+"</phucap><tienthuong>" + $("#tienthuong_create").val()+"</tienthuong><baohiem>" + $("#baohiem_create").val()+"</baohiem><tong>" + $("#tong_create").val()+"</tong><ngaylinh>" + $("#ngaylinh_create").val()+"</ngaylinh><ghichu>" + $("#ghichu_create").val()+"</ghichu></doc>"},
+                                  data: {"xml":"<doc><method>create</method><manv>" + $("#manv_create").val()+"</manv><luongcoban>" + $("#luongcoban_create").val()+"</luongcoban><phucap>" + $("#phucap_create").val()+"</phucap><tienthuong>" + $("#tienthuong_create").val()+"</tienthuong><baohiem>" + $("#baohiem_create").val()+"</baohiem><ngaylinh>" + $("#ngaylinh_create").val()+"</ngaylinh><ghichu>" + $("#ghichu_create").val()+"</ghichu></doc>"},
                                   error: function(){
                                       $( "#dialog_error" ).dialog({
                                           modal: true,
@@ -266,7 +265,7 @@ $(function() {
                               $.ajax({
                                   type: "POST",
                                   url: "<%=request.getContextPath()%>/luong_Servlet",
-                                  data: {"xml":"<doc><method>update</method><ma>" + ret.ma + "</ma><manv>" + $("#manv_edit").val()+"</manv><luongcoban>" + $("#luongcoban_edit").val()+"</luongcoban><phucap>" + $("#phucap_edit").val()+"</phucap><tienthuong>" + $("#tienthuong_edit").val()+"</tienthuong><baohiem>" + $("#baohiem_edit").val()+"</baohiem><tong>" + $("#tong_edit").val()+"</tong><ngaylinh>" + $("#ngaylinh_edit").val()+"</ngaylinh><ghichu>" + $("#ghichu_edit").val()+"</ghichu></doc>"},
+                                  data: {"xml":"<doc><method>update</method><ma>" + $("#ma_edit").val()+"</ma><manv>" + $("#manv_edit").val()+"</manv><luongcoban>" + $("#luongcoban_edit").val()+"</luongcoban><phucap>" + $("#phucap_edit").val()+"</phucap><tienthuong>" + $("#tienthuong_edit").val()+"</tienthuong><baohiem>" + $("#baohiem_edit").val()+"</baohiem><tong>" + $("#tong_edit").val()+"</tong><ngaylinh>" + $("#ngaylinh_edit").val()+"</ngaylinh><ghichu>" + $("#ghichu_edit").val()+"</ghichu></doc>"},
                                   error: function(){
 
                                       $( "#dialog_error" ).dialog({
@@ -443,10 +442,10 @@ $(function() {
 <div id="dialog_form_edit" style="display: none" title="Sửa">
 	<form>
 		<table width="100%">
-<!--			<tr>
+			<tr>
 				<td align=left><label for="ma_edit">Mã sản phẩm<font color="red">(*)</font></label></td>
 				<td align=left><input type="text" id="ma_edit" name="ma_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="20" /></td>
-			</tr>-->
+			</tr>
 			<tr>
 				<td align=left><label for="manv_edit">Tên sản phẩm<font color="red">(*)</font></label></td>
 				<td align=left><input type="text" id="manv_edit" name="manv_edit" value="" class="text ui-widget-content ui-corner-all" maxlength="128" /></td>
@@ -508,6 +507,11 @@ Có lỗi xảy ra. Hãy kiểm tra lại!
 		}
 	});
 	$("#manv_search").keypress(function(event) {
+		if ( event.which == 13 ) {
+			reloadluongList();
+		}
+	});
+        $("#luongcoban_search").keypress(function(event) {
 		if ( event.which == 13 ) {
 			reloadluongList();
 		}
